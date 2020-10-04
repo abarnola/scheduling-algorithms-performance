@@ -28,8 +28,14 @@ def findAverageTime(n, ids, bt, at):
         total_wt = total_wt + wt[i]
         total_tat = total_tat + tat[i]
         compl_time[i] = tat[i] + at[i]
-    print('Average Waiting Time: %.5f' %(total_wt/n))
-    print('Average Turnaround Time: %.5f' %(total_tat/n))
+    # Write to console
+    print('Average Waiting Time: %.3f' %(total_wt/n))
+    print('Average Turnaround Time: %.3f' %(total_tat/n))
+
+    # Write to file
+    out = open('out/output.fcfs.txt', 'w')
+    out.write('\nAverage Waiting Time: %.3f' %(total_wt/n))
+    out.write('\nAverage Turnaround Time: %.3f' %(total_tat/n))
 
 ids = [0, 1, 2, 3, 4, 5]
 at = [0, 1, 2, 3, 4, 5]

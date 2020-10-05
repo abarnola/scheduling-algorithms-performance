@@ -43,12 +43,23 @@ def findAvgTime(processes, n, bt, quantum):
     for i in range(n):
         total_wt = total_wt + wt[i]
         total_tat = total_tat + tat[i]
+    print('Average Waiting Time: %.3f'%(total_wt/n))
+    print('Average Turnaround Time: %.3f' %(total_tat/n))
+    out = open('out/round-robin.txt', 'a+')
+    line = ''
+    line += str(n) + ', '
+    line += str(round(sum(bt)/n, 3)) + ', '
+    line += str(round(total_wt/n, 3)) + ', '
+    line += str(round(total_tat/n, 3)) + ', '
+    line += '\n'
+    out.write(line)
 
-    print('\nAverage Waiting Time: %.3f '%(total_wt/n))
-    print('\nAverage Turnaround Time: %.3f' %(total_tat/n))
+def rr(n, ids, bt, q):
+    findAvgTime(ids, n, bt, q)
 
-ids = [1, 2, 3]
-n = 3
-burst_time = [10, 5, 8]
-quantum = 2
-findAvgTime(ids, n, burst_time, quantum)
+if (__name__ == '__main__'):
+    ids = [1, 2, 3]
+    n = 3
+    burst_time = [10, 5, 8]
+    quantum = 2
+    findAvgTime(ids, n, burst_time, quantum)

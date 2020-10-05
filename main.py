@@ -1,35 +1,27 @@
 import random
+from sjf_np import sjf
+from round_robin import rr
+from fcfs import fcfs
 
-"""
-Generate a queue of processes
-@param size: number of items in the queue
-@param processes: number of different processes
-"""
-def generateQueue(size, processes):
-    ids = []
-    burst_times = []
-    arrival_times = []
-    priorities = []
-    res = {}
-    for i in range(size):
-        ids.append(i)
-        burst_times.append(random.randint(1, 15))
-        arrival_times.append(i)
-        priorities.append(random.randint(1, 10))
+bt = []
+at = []
+ids = []
+wt = []
 
-    res["ids"] = ids
-    res["burst_times"] = burst_times
-    res["arrival_times"] = arrival_times
-    res["priorities"] = priorities
+def generateProcesses(n):
+    for i in range(n):
+        ids.append(i + 1)
+        at.append(i+1)
+        bt.append(random.randint(5, 15))
 
-    return res
+x = int(input('times to run algorithms: '))
+for i in range(x):
+    n = random.randint(5, 100)
+    print('n = ' + str(n))
+    generateProcesses(n)
+    fcfs(n, ids, bt, at)
+    rr(n, ids, bt, 2)
+    # Need to fix sjf
+    # sjf(n, ids, bt, at)
 
-def fcfs(queue):
-    ids = queue['ids']
-    burst_times = queue['burst_times']
-    arrival_times = queue['arrival_times']
 
-mylist = [0]
-n = 5
-print(mylist * 5)
-print(generateQueue(4, 4))

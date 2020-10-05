@@ -38,7 +38,6 @@ def completionTime(arr, n):
                 arr[val][k] = arr[i][k]
                 arr[i][k] = tmp
     return arr
-    
 
 processes = [
         [1, 2, 3, 0, 0, 0],
@@ -46,7 +45,37 @@ processes = [
         [3, 4, 2, 0, 0, 0],
         [4, 5, 4, 0, 0, 0]
     ]
+
+def sjf(n, ids, bt, at):
+    arr = []
+    for i in range(n):
+        arr.append([0] * 6)
+        arr[i][0] = ids[i]
+        arr[i][1] = at[i]
+        arr[i][2] = bt[i]
+    arr = sortByIndex(arr, 2)
+    completionTime(arr, n)
+
+    total_bt = 0
+    total_tat = 0
+    total_wt = 0
+    for i in range(n):
+        total_bt += arr[i][2]
+        total_tat += arr[i][4]
+        total_wt += arr[i][5]
+    avg_bt = round(total_bt/n, 3)
+    avg_tat = round(total_tat/n, 3)
+    avg_wt = round(total_wt/n, 3)
+
+    out = open('out/sjf.csv', 'a+')
+    line = ''
+    line += str(n) + ', '
+    line += str(avg_bt) + ', '
+    line += str(avg_wt) + ', '
+    line += str(avg_tat) + ', '
+    out.write(line)
+
 processes = sortByIndex(processes, 2)
 completionTime(processes, 4)
-for i in range(4):
-    print(processes[i])
+#for i in range(4):
+    #print(processes[i])

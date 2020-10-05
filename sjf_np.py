@@ -21,12 +21,11 @@ def completionTime(arr, n):
     arr[0][3] = arr[0][1] + arr[0][2]
     arr[0][4] = arr[0][3] - arr[0][1]
     arr[0][5] = arr[0][4] - arr[0][2]
-
     for i in range(1, n):
         temp = arr[i - 1][3]
         low = arr[i][2]
         for j in range(i, n):
-            if (temp >= arr[j][i] and low >= arr[j][2]):
+            if (temp >= arr[j][1] and low >= arr[j][2]):
                 low = arr[j][2]
                 val = j
             arr[val][3] = temp + arr[val][2]
@@ -38,7 +37,6 @@ def completionTime(arr, n):
                 arr[val][k] = arr[i][k]
                 arr[i][k] = tmp
     return arr
-
 processes = [
         [1, 2, 3, 0, 0, 0],
         [2, 0, 4, 0, 0, 0],
@@ -71,11 +69,12 @@ def sjf(n, ids, bt, at):
     line = ''
     line += str(n) + ', '
     line += str(avg_bt) + ', '
-    line += str(avg_wt) + ', '
     line += str(avg_tat) + ', '
+    line += str(avg_wt) + '\n'
     out.write(line)
 
-processes = sortByIndex(processes, 2)
-completionTime(processes, 4)
-#for i in range(4):
-    #print(processes[i])
+if (__name__ == '__main__'):
+    processes = sortByIndex(processes, 2)
+    completionTime(processes, 4)
+    for i in range(4):
+        print(processes[i])

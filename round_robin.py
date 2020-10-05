@@ -45,12 +45,12 @@ def findAvgTime(processes, n, bt, quantum):
         total_tat = total_tat + tat[i]
     print('Average Waiting Time: %.3f'%(total_wt/n))
     print('Average Turnaround Time: %.3f' %(total_tat/n))
-    out = open('out/round-robin.txt', 'a+')
+    out = open('out/round-robin.csv', 'a+')
     line = ''
     line += str(n) + ', '
     line += str(round(sum(bt)/n, 3)) + ', '
-    line += str(round(total_wt/n, 3)) + ', '
     line += str(round(total_tat/n, 3)) + ', '
+    line += str(round(total_wt/n, 3))
     line += '\n'
     out.write(line)
 

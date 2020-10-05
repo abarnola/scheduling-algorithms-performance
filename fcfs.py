@@ -31,11 +31,16 @@ def findAverageTime(n, ids, bt, at):
     # Write to console
     print('Average Waiting Time: %.3f' %(total_wt/n))
     print('Average Turnaround Time: %.3f' %(total_tat/n))
-
     # Write to file
-    out = open('out/output.fcfs.txt', 'a+')
-    out.write('Average Waiting Time: %.3f' %(total_wt/n))
-    out.write('Average Turnaround Time: %.3f' %(total_tat/n))
+    out = open('out/fcfs.csv', 'a+')
+    #out.write('Average Waiting Time: %.3f' %(total_wt/n))
+    #out.write('Average Turnaround Time: %.3f' %(total_tat/n))
+    line = ''
+    line += str(n)
+    line += str(round(sum(bt)/n, 3)) + ', '
+    line += str(round(total_tat/n, 3)) + ', '
+    line += str(round(total_wt/n, 3)) + '\n'
+    out.write(line)
 
 def fcfs(n, ids, bt, at):
     findAverageTime(n, ids, bt, at)

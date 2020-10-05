@@ -22,8 +22,8 @@ def clearProcesses():
     wt = []
 
 x = int(input('times to run algorithms: '))
-for i in range(x):
-    n = random.randint(5, 100)
+for i in range(5, x):
+    n = i
     print('n = ' + str(n))
     generateProcesses(n)
     fcfs(n, ids, bt, at)

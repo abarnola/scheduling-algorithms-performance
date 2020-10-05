@@ -36,7 +36,7 @@ def findAverageTime(n, ids, bt, at):
     #out.write('Average Waiting Time: %.3f' %(total_wt/n))
     #out.write('Average Turnaround Time: %.3f' %(total_tat/n))
     line = ''
-    line += str(n)
+    line += str(n) + ', '
     line += str(round(sum(bt)/n, 3)) + ', '
     line += str(round(total_tat/n, 3)) + ', '
     line += str(round(total_wt/n, 3)) + '\n'
